@@ -114,13 +114,16 @@ function renderPrice() {
   let totalPrice = basePrice;
   
   for(let oneIngredient in ingredients) {
-    // console.log('state.oneIngredient', state[oneIngredient]);
     if(state[oneIngredient]) {
+      let newLi = document.createElement('li')
+      newLi.innerHTML = `$${ingredients[oneIngredient].price} ${ingredients[oneIngredient].name}`
+      priceListEle.appendChild(newLi);
+      //priceListEle.innerHTML += `
+      // <li>$${ingredients[oneIngredient].price} ${ingredients[oneIngredient].name}</li>
+      //   `
       totalPrice += ingredients[oneIngredient].price;
-      priceListEle.innerHTML += `
-        <li>$${ingredients[oneIngredient].price} ${ingredients[oneIngredient].name}</li>
-      `
     }
+
     totalPriceEle.innerHTML = `$${totalPrice}`;
   }
 
